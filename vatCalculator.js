@@ -13,6 +13,17 @@ class VatCalculator {
       Norway: 0.25,
       Turkey: 0.18
     };
+    this._currencySymbols = {
+      Uk: "£ ",
+      France: "€ ",
+      Switzerland: "CHF ",
+      Germany: "€ ",
+      Greece: "€ ",
+      Ireland: "€ ",
+      Italy: "€ ",
+      Norway: "kr ",
+      Turkey: "₺ "
+    };
     this._entry1 = 0.0;
     this._entry2 = 0.0;
   }
@@ -38,5 +49,9 @@ class VatCalculator {
 
   getTaxRate(country) {
     return this._taxRates[country];
+  }
+
+  getCurrency(country) {
+    return this._currencySymbols[country];
   }
 }
