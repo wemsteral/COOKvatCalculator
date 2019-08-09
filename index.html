@@ -5,115 +5,115 @@
   <link rel="stylesheet" href="./style.css">
   <title>Vat Calculator</title>
 </head>
-<div class="flex">
-
-  <body>
-    <section>
-      <div style="clear:both"></div>
-
-      <div class="title">
-        <img src="./cooklogo.png">
-        <h1 class="header">VAT Calculator</h1>
-      </div>
-
-      <h3 class="subheader">Total Excl. VAT: £<span id="netTotal">0.00</span></h3>
-      <h3 class="subheader">VAT @ <span id="taxRate">20</span>%: <span id="taxAmount">0.00</span></h3>
-      <h3 class="subheader">Total: £<span id="grossTotal">0.00</span></h3>
-
-      <form id="form">
-        <input class="entryNumber" id="entry1" type="number" min="0" step=".01" placeholder="Price 1" pattern="^\d*(\.\d{0,2})?$" required />
-        <input class="entryNumber" id="entry2" type="number" min="0" step=".01" placeholder="Price 2" pattern="^\d*(\.\d{0,2})?$" required />
-        <button type="submit" class="submitButton" id="calculate">
-          Submit
-        </button>
-        <button id="reset">Reset</button>
-      </form>
-
-      <br>
-
-      <form id="countryForm">
-        <label>Select Country</label>
-        <select id="countries">
-          <option value="Uk">United Kingdom</option>
-          <option value="France">France</option>
-          <option value="Switzerland">Switzerland</option>
-          <option value="Germany">Germany</option>
-          <option value="Greece">Greece</option>
-          <option value="Ireland">Ireland</option>
-          <option value="Italy">Italy</option>
-          <option value="Norway">Norway</option>
-          <option value="Turkey">Turkey</option>
-        </select>
-      </form>
 
 
-    </section>
-    <script src="./vatCalculator.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script>
-      $(document).ready(function() {
-        var vc = new VatCalculator();
+<body>
+  <section>
+    <div style="clear:both"></div>
 
-        function resetAll() {
-          $("#netTotal").text(("0"));
-          $("#grossTotal").text(("0"));
-          $("#taxAmount").text(("0"));
-        }
+    <div class="title">
+      <img src="./cooklogo.png">
+      <h1 class="header">VAT Calculator</h1>
+    </div>
 
-        function getCountry() {
-          return $("#countries option:selected").val();
-        }
+    <h3 class="subheader">Total Excl. VAT: £<span id="netTotal">0.00</span></h3>
+    <h3 class="subheader">VAT @ <span id="taxRate">20</span>%: <span id="taxAmount">0.00</span></h3>
+    <h3 class="subheader">Total: £<span id="grossTotal">0.00</span></h3>
 
-        function updateTaxRate() {
-          $("#taxRate").text(vc.getTaxRate(getCountry()) * 100)
-        }
+    <form id="form">
+      <input class="entryNumber" id="entry1" type="number" min="0" step=".01" placeholder="Price 1" pattern="^\d*(\.\d{0,2})?$" required />
+      <input class="entryNumber" id="entry2" type="number" min="0" step=".01" placeholder="Price 2" pattern="^\d*(\.\d{0,2})?$" required />
+      <button type="submit" class="submitButton" id="calculate">
+        Submit
+      </button>
+      <button id="reset">Reset</button>
+    </form>
 
-        function updateNetTotal() {
-          $("#netTotal").text(vc.netTotal());
-        }
+    <br>
 
-        function updateGrossTotal() {
-          $("#grossTotal").text(vc.grossTotal(getCountry()));
-        }
+    <form id="countryForm">
+      <label>Select Country</label>
+      <select id="countries">
+        <option value="Uk">United Kingdom</option>
+        <option value="France">France</option>
+        <option value="Switzerland">Switzerland</option>
+        <option value="Germany">Germany</option>
+        <option value="Greece">Greece</option>
+        <option value="Ireland">Ireland</option>
+        <option value="Italy">Italy</option>
+        <option value="Norway">Norway</option>
+        <option value="Turkey">Turkey</option>
+      </select>
+    </form>
 
-        function updateTaxAmount() {
-          $("#taxAmount").text(vc.taxAmount(getCountry()));
-        }
 
-        function getEntryValue1() {
-          var entryValue1 = document.getElementById("entry1").value;
-          return parseFloat(entryValue1);
-        }
+  </section>
+  <script src="./vatCalculator.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var vc = new VatCalculator();
 
-        function getEntryValue2() {
-          var entryValue2 = document.getElementById("entry2").value;
-          return parseFloat(entryValue2);
-        }
+      function resetAll() {
+        $("#netTotal").text(("0"));
+        $("#grossTotal").text(("0"));
+        $("#taxAmount").text(("0"));
+      }
 
-        $("#form").submit(function() {
-          event.preventDefault();
-          vc.enterCosts(getEntryValue1(), getEntryValue2());
-          updateNetTotal();
-          updateGrossTotal();
-          updateTaxAmount();
-        });
+      function getCountry() {
+        return $("#countries option:selected").val();
+      }
 
-        $("#countries").change(function() {
-          event.preventDefault();
-          updateTaxRate();
-          vc.enterCosts(getEntryValue1(), getEntryValue2());
-          updateNetTotal();
-          updateGrossTotal();
-          updateTaxAmount();
-        })
+      function updateTaxRate() {
+        $("#taxRate").text(vc.getTaxRate(getCountry()) * 100)
+      }
 
-        $("#reset").click(function() {
-          event.preventDefault();
-          resetAll();
-        })
+      function updateNetTotal() {
+        $("#netTotal").text(vc.netTotal());
+      }
+
+      function updateGrossTotal() {
+        $("#grossTotal").text(vc.grossTotal(getCountry()));
+      }
+
+      function updateTaxAmount() {
+        $("#taxAmount").text(vc.taxAmount(getCountry()));
+      }
+
+      function getEntryValue1() {
+        var entryValue1 = document.getElementById("entry1").value;
+        return parseFloat(entryValue1);
+      }
+
+      function getEntryValue2() {
+        var entryValue2 = document.getElementById("entry2").value;
+        return parseFloat(entryValue2);
+      }
+
+      $("#form").submit(function() {
+        event.preventDefault();
+        vc.enterCosts(getEntryValue1(), getEntryValue2());
+        updateNetTotal();
+        updateGrossTotal();
+        updateTaxAmount();
       });
-    </script>
-  </body>
-</div>
+
+      $("#countries").change(function() {
+        event.preventDefault();
+        updateTaxRate();
+        vc.enterCosts(getEntryValue1(), getEntryValue2());
+        updateNetTotal();
+        updateGrossTotal();
+        updateTaxAmount();
+      })
+
+      $("#reset").click(function() {
+        event.preventDefault();
+        resetAll();
+      })
+    });
+  </script>
+</body>
+
 
 </html>

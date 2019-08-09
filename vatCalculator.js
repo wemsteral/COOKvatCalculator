@@ -31,7 +31,8 @@ class VatCalculator {
   }
 
   grossTotal(country) {
-    var gT = this._entry1 + this._entry2 + parseFloat(this.taxAmount(country));
+    const gT =
+      this._entry1 + this._entry2 + parseFloat(this.taxAmount(country));
     return gT.toFixed(2);
   }
 

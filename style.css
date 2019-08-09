@@ -15,9 +15,6 @@
 
 body {
   background-color: #e6e1dd;
-}
-
-.flex {
   min-height: 100vh;
   display: flex;
   align-items: center;
