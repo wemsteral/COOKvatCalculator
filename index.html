@@ -12,7 +12,7 @@
       <div style="clear:both"></div>
 
       <div class="title">
-        <img src="./download.png">
+        <img src="./cooklogo.png">
         <h1 class="header">VAT Calculator</h1>
       </div>
 
@@ -21,7 +21,7 @@
       <h3 class="subheader">Total: £<span id="grossTotal">0.00</span></h3>
 
       <form id="form">
-        <input class=" entryNumber" id="entry1" type="number" min="0" step=".01" placeholder="Price 1" pattern="^\d*(\.\d{0,2})?$" required />
+        <input class="entryNumber" id="entry1" type="number" min="0" step=".01" placeholder="Price 1" pattern="^\d*(\.\d{0,2})?$" required />
         <input class="entryNumber" id="entry2" type="number" min="0" step=".01" placeholder="Price 2" pattern="^\d*(\.\d{0,2})?$" required />
         <button type="submit" class="submitButton" id="calculate">
           Submit
@@ -30,6 +30,7 @@
       </form>
 
       <br>
+
       <form id="countryForm">
         <label>Select Country</label>
         <select id="countries">
@@ -44,6 +45,7 @@
           <option value="Turkey">Turkey</option>
         </select>
       </form>
+
 
     </section>
     <script src="./vatCalculator.js"></script>
@@ -97,8 +99,12 @@
         });
 
         $("#countries").change(function() {
-
+          event.preventDefault();
           updateTaxRate();
+          vc.enterCosts(getEntryValue1(), getEntryValue2());
+          updateNetTotal();
+          updateGrossTotal();
+          updateTaxAmount();
         })
 
         $("#reset").click(function() {

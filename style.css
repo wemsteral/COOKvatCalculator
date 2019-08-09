@@ -29,7 +29,8 @@ button {
   font-family: "cookfont", cursive;
 }
 
-form {
+#countryForm {
   font-family: "cookfont", cursive;
-  align-items: center;
+  width: 250px;
+  margin: auto;
 }

@@ -39,6 +39,3 @@ class VatCalculator {
     return this._taxRates[country];
   }
 }
-
-const vat = new VatCalculator();
-console.log(vat._taxRates["Uk"]);
