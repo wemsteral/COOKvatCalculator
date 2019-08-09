@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "cookfont";
+  src: url("./cook.woff") format("woff");
+}
+
+.header {
+  font-family: cookfont;
+  text-align: center;
+}
+
+.subheader {
+  font-family: cookfont;
+  text-align: center;
+}
+
+body {
+  background-color: #e6e1dd;
+}
+
+.flex {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  padding-top: 5px;
+  font-family: "cookfont", cursive;
+}

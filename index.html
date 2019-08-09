@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="./style.css">
+  <title>Vat Calculator</title>
+</head>
+<div class="flex">
+
+  <body>
+    <section>
+      <div style="clear:both"></div>
+
+      <div class="title">
+        <img src="./download.png">
+        <h1 class="header">VAT Calculator</h1>
+      </div>
+
+      <h3 class="subheader">Total Excl. VAT: £<span class="counter" id="netTotal">0.00</span></h3>
+      <h3 class="subheader">VAT @ 20%: £<span class="counter" id="taxAmount">0.00</span></h3>
+      <h3 class="subheader">Total: £<span class="counter" id="grossTotal">0.00</span></h3>
+
+      <form id="form">
+        <input class=" entryNumber" id="entry1" onchange="setTwoNumberDecimal" type="number" min="0" step=".01" placeholder="Price 1" pattern="^\d*(\.\d{0,2})?$" required />
+        <input class="entryNumber" id="entry2" type="number" min="0" step=".01" placeholder="Price 2" pattern="^\d*(\.\d{0,2})?$" required />
+        <button type="submit" class="submitButton" id="calculate">
+          Submit
+        </button>
+        <button id="reset">Reset</button>
+      </form>
+
+      <h2 id="errorMessage"></h2>
+    </section>
+    <script src="./vatCalculator.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var vc = new VatCalculator();
+
+        function resetAll() {
+          $("#netTotal").text(("0"));
+          $("#grossTotal").text(("0"));
+          $("#taxAmount").text(("0"));
+        }
+
+        function updateNetTotal() {
+          $("#netTotal").text(vc.netTotal());
+        }
+
+        function updateGrossTotal() {
+          $("#grossTotal").text(vc.grossTotal());
+        }
+
+        function updateTaxAmount() {
+          $("#taxAmount").text(vc.taxAmount());
+        }
+
+        function getEntryValue1() {
+          var entryValue1 = document.getElementById("entry1").value;
+          return parseFloat(entryValue1);
+        }
+
+        function getEntryValue2() {
+          var entryValue2 = document.getElementById("entry2").value;
+          return parseFloat(entryValue2);
+        }
+
+        $("#form").submit(function() {
+          event.preventDefault();
+          vc.enterCosts(getEntryValue1(), getEntryValue2());
+          updateNetTotal();
+          updateGrossTotal();
+          updateTaxAmount();
+        });
+
+        $("#reset").click(function() {
+          event.preventDefault();
+          resetAll();
+        })
+      });
+    </script>
+  </body>
+</div>
+
+</html>
