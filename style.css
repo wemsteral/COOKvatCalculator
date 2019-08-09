@@ -28,3 +28,8 @@ button {
   padding-top: 5px;
   font-family: "cookfont", cursive;
 }
+
+form {
+  font-family: "cookfont", cursive;
+  align-items: center;
+}

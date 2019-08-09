@@ -16,12 +16,12 @@
         <h1 class="header">VAT Calculator</h1>
       </div>
 
-      <h3 class="subheader">Total Excl. VAT: £<span class="counter" id="netTotal">0.00</span></h3>
-      <h3 class="subheader">VAT @ 20%: £<span class="counter" id="taxAmount">0.00</span></h3>
-      <h3 class="subheader">Total: £<span class="counter" id="grossTotal">0.00</span></h3>
+      <h3 class="subheader">Total Excl. VAT: £<span id="netTotal">0.00</span></h3>
+      <h3 class="subheader">VAT @ <span id="taxRate">20</span>%: <span id="taxAmount">0.00</span></h3>
+      <h3 class="subheader">Total: £<span id="grossTotal">0.00</span></h3>
 
       <form id="form">
-        <input class=" entryNumber" id="entry1" onchange="setTwoNumberDecimal" type="number" min="0" step=".01" placeholder="Price 1" pattern="^\d*(\.\d{0,2})?$" required />
+        <input class=" entryNumber" id="entry1" type="number" min="0" step=".01" placeholder="Price 1" pattern="^\d*(\.\d{0,2})?$" required />
         <input class="entryNumber" id="entry2" type="number" min="0" step=".01" placeholder="Price 2" pattern="^\d*(\.\d{0,2})?$" required />
         <button type="submit" class="submitButton" id="calculate">
           Submit
@@ -29,7 +29,22 @@
         <button id="reset">Reset</button>
       </form>
 
-      <h2 id="errorMessage"></h2>
+      <br>
+      <form id="countryForm">
+        <label>Select Country</label>
+        <select id="countries">
+          <option value="United Kingdom">Uk</option>
+          <option value="France">France</option>
+          <option value="Switzerland">Switzerland</option>
+          <option value="Germany">Germany</option>
+          <option value="Greece">Greece</option>
+          <option value="Ireland">Ireland</option>
+          <option value="Italy">Italy</option>
+          <option value="Norway">Norway</option>
+          <option value="Turkey">Turkey</option>
+        </select>
+      </form>
+
     </section>
     <script src="./vatCalculator.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -43,16 +58,24 @@
           $("#taxAmount").text(("0"));
         }
 
+        function getCountry() {
+          return $("#countries option:selected").text();
+        }
+
+        function updateTaxRate() {
+          $("#taxRate").text(vc.getTaxRate(getCountry()) * 100)
+        }
+
         function updateNetTotal() {
           $("#netTotal").text(vc.netTotal());
         }
 
         function updateGrossTotal() {
-          $("#grossTotal").text(vc.grossTotal());
+          $("#grossTotal").text(vc.grossTotal(getCountry()));
         }
 
         function updateTaxAmount() {
-          $("#taxAmount").text(vc.taxAmount());
+          $("#taxAmount").text(vc.taxAmount(getCountry()));
         }
 
         function getEntryValue1() {
@@ -72,6 +95,11 @@
           updateGrossTotal();
           updateTaxAmount();
         });
+
+        $("#countries").change(function() {
+          event.preventDefault();
+          updateTaxRate();
+        })
 
         $("#reset").click(function() {
           event.preventDefault();
