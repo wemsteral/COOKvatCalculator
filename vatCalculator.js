@@ -3,7 +3,7 @@
 class VatCalculator {
   constructor() {
     this._taxRates = {
-      "United Kingdom": 0.2,
+      Uk: 0.2,
       France: 0.2,
       Switzerland: 0.08,
       Germany: 0.19,

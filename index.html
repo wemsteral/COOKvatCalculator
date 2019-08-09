@@ -33,7 +33,7 @@
       <form id="countryForm">
         <label>Select Country</label>
         <select id="countries">
-          <option value="United Kingdom">Uk</option>
+          <option value="Uk">United Kingdom</option>
           <option value="France">France</option>
           <option value="Switzerland">Switzerland</option>
           <option value="Germany">Germany</option>
@@ -59,7 +59,7 @@
         }
 
         function getCountry() {
-          return $("#countries option:selected").text();
+          return $("#countries option:selected").val();
         }
 
         function updateTaxRate() {
@@ -97,7 +97,7 @@
         });
 
         $("#countries").change(function() {
-          event.preventDefault();
+
           updateTaxRate();
         })
 
