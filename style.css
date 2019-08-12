@@ -24,6 +24,9 @@ body {
 button {
   padding-top: 5px;
   font-family: "cookfont", cursive;
+  background-color: #e6e1dd;
+  border: none;
+  font-size: 14px;
 }
 
 #countryForm {

@@ -38,12 +38,12 @@ class VatCalculator {
   }
 
   taxAmount(country) {
-    return ((this._entry1 + this._entry2) * this._taxRates[country]).toFixed(2);
+    return (this.netTotal() * this._taxRates[country]).toFixed(2);
   }
 
   grossTotal(country) {
     const gT =
-      this._entry1 + this._entry2 + parseFloat(this.taxAmount(country));
+      parseFloat(this.netTotal()) + parseFloat(this.taxAmount(country));
     return gT.toFixed(2);
   }
 
