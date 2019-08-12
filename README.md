@@ -36,8 +36,8 @@ Unrecognised characters
 Numbers beyond two decimal places
 No entries
 
-Most of these were solved with clauses in the <form>, for instance setting the “patter” to the appropriate RegEx to ensure an integer with a maximum of 2 decimal places was used, also setting a minimum, making it required etc.
+Most of these were solved with clauses in the `<form>`, for instance setting the “pattern” to the appropriate RegEx to ensure an integer with a maximum of 2 decimal places was used, setting a `min`imum value, making it `required` etc.
 
 Of course there is a difference between an integer and a float in almost all programming languages, so all entries needed to be converted to floats and fixed to two decimal places before they’re processed in any way.
 
-Javascript also has a default upper limit to the memory it can allocate to a float, so extremely large numbers pose a problem to this app. I believe there are some popular external libraries one can use to overcome this. If this were written in a lower level language, I understand that the memory allocation can be manually set.
+Javascript also has a default upper limit to the memory it can allocate to a float, so extremely large numbers pose a problem to this app. I believe there are some popular external libraries one can use to overcome this. If this were written in a lower level language, I understand that the memory allocation could be manually set.
