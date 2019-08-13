@@ -9,11 +9,12 @@ A tech-test given to me by COOK Kitchen.
 The COOK Vat Calculator takes two values as input, and upon submission, displays the total of those two values, the amount of tax and the grand total; the former two combined.
 
 Extra features:
-A reset button to make all displayed totals go to zero
-The ability to change the country in question, via drop down box.
-Changing currency symbols depending on choice of country.
-Changing visible tax rate.
-COOK styling!
+
+- A reset button to make all displayed totals go to zero
+- The ability to change the country in question, via drop down box.
+- Changing currency symbols depending on choice of country.
+- Changing visible tax rate.
+- COOK styling!
 
 # How do I use it?
 
