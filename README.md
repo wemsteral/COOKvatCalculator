@@ -34,10 +34,10 @@ Finally, styling. I was fortunate to be able to get the COOK font and background
 
 As with all user-input-related apps, there were a lot of edge cases that needed guarding against:
 
-Negative numbers
-Unrecognised characters
-Numbers beyond two decimal places
-No entries
+- Negative numbers
+- Unrecognised characters
+- Numbers beyond two decimal places
+- No entries
 
 Most of these were solved with clauses in the `<form>`, for instance setting the “pattern” to the appropriate RegEx to ensure an integer with a maximum of 2 decimal places was used, setting a `min`imum value, making it `required` etc.
 
